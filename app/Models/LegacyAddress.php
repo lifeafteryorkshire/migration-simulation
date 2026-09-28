@@ -45,6 +45,10 @@ class LegacyAddress extends Model
         'Postcode',
         'DateCreated',
         'Active',
+        'migrated'
+    ];
+
+    protected $guarded = [
     ];
 
     /**
@@ -56,6 +60,7 @@ class LegacyAddress extends Model
         'AddressID'   => 'integer',
         'DateCreated' => 'datetime',
         'Active'      => 'boolean',
+        'migrated'    => 'boolean',
     ];
 
     /*
@@ -107,5 +112,23 @@ class LegacyAddress extends Model
         return $query->where('TownCity', 'NOT REGEXP', '[0-9]')
                      ->where('AddressLine1', 'NOT REGEXP', '[^a-zA-Z0-9 ]')
                      ->where('Postcode', 'REGEXP', '^[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][A-Z]{2}$');
+    }
+
+    public function scopeUnmigrated($query)
+    {
+        return $query->where('migrated', false);
+    }
+
+    public function __get($key)
+    {
+        if ($key === 'Postcode') {
+            return $this->attributes['Postcode'] ?? $this->attributes['postcode'] ?? null;
+        }
+
+        if ($key === 'AddressLine1') {
+            return $this->attributes['AddressLine1'] ?? $this->attributes['address_line_1'] ?? null;
+        }
+
+        return parent::__get($key);
     }
 }
