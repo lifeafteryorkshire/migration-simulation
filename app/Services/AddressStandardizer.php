@@ -19,9 +19,9 @@ class AddressStandardizer
         if (is_array($address)) {
             $postcode = $address['Postcode'] ?? $address['postcode'] ?? $address['AddressLine1'] ?? null;
         } else {
-            $postcode = $address->Postcode 
-                ?? $address->postcode 
-                ?? $address->getAttribute('Postcode') 
+            $postcode = $address->Postcode
+                ?? $address->postcode
+                ?? $address->getAttribute('Postcode')
                 ?? $address->getAttribute('postcode')
                 ?? $address->getAttribute('AddressLine1');
         }

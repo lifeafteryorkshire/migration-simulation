@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Api\AddressMigrationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,4 +19,3 @@ Route::get('/v1/status', function () {
 
 Route::post('/addresses/migrate', [AddressMigrationController::class, 'migrate'])
     ->name('api.addresses.migrate');
-

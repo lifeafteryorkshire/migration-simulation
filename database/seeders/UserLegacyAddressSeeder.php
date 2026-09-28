@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserLegacyAddressSeeder extends Seeder
@@ -17,7 +16,7 @@ class UserLegacyAddressSeeder extends Seeder
 
         $userAddresses = [];
 
-        foreach ($users as $idx =>$user) {
+        foreach ($users as $idx => $user) {
             $userAddresses = array_merge($userAddresses, array_map(function ($address) use ($user) {
                 return [
                     'user_id' => $user,
@@ -27,7 +26,7 @@ class UserLegacyAddressSeeder extends Seeder
                 ];
             }, $addresses));
         }
-        
+
         \App\Models\UserLegacyAddress::insert($userAddresses);
     }
 }

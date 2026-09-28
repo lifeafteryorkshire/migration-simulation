@@ -10,7 +10,8 @@ class AddressMigrationController extends Controller
 {
     public function __construct(
         protected AddressMigrationService $migrationService
-    ) {}
+    ) {
+    }
 
     public function migrate(): JsonResponse
     {

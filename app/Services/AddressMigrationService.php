@@ -12,7 +12,8 @@ class AddressMigrationService
 {
     public function __construct(
         protected AddressStandardizer $standardizer
-    ) {}
+    ) {
+    }
 
     public function migratePending(): array
     {

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use App\Models\LegacyAddress;
@@ -67,6 +66,6 @@ class LegacyAddressSeeder extends Seeder
 
         $count = count($records);
         $this->command->info("Successfully imported {$count} legacy address records.");
-    
+
     }
 }
